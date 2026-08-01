@@ -4,6 +4,8 @@ Omarchy bar widget that shifts your Bluetooth audio fidelity: pick the A2DP
 codec (AAC, SBC, SBC-XQ) or switch to a headset profile (CVSD, MSBC) for each
 connected Bluetooth audio device, straight from the bar.
 
+![Preview](preview.png)
+
 ## Requirements
 
 - Omarchy (Quickshell shell)
