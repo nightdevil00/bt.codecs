@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "local.btcodec",
+  "name": "Bluetooth codec",
+  "version": "1.0.0",
+  "author": "mihai",
+  "license": "MIT",
+  "description": "Shift Bluetooth audio fidelity: pick the A2DP codec or headset profile for each connected Bluetooth audio device.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "activation": "on-demand",
+  "entryPoints": {
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "Bluetooth codec",
+    "description": "Bar icon showing the active Bluetooth codec; popup lists every connected device's codec profiles (AAC, SBC, SBC-XQ, headset, ...) to switch between.",
+    "category": "Audio",
+    "defaultSection": "right",
+    "allowMultiple": false
+  }
+}
