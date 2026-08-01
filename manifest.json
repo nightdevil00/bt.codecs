@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "local.btcodec",
+  "id": "bt.codecs",
   "name": "Bluetooth codec",
   "version": "1.0.0",
   "author": "mihai",

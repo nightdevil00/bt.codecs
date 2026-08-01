@@ -19,13 +19,13 @@ omarchy plugin add git@github.com:nightdevil00/bt.codecs.git --enable
 ```
 
 `--enable` places the widget in your bar right away. To pick the bar section
-interactively, omit `--enable` and run `omarchy plugin enable local.btcodec`
+interactively, omit `--enable` and run `omarchy plugin enable bt.codecs`
 after installing.
 
 If you already have the plugin installed, update it with:
 
 ```bash
-omarchy plugin update local.btcodec
+omarchy plugin update bt.codecs
 ```
 
 ## Usage
@@ -46,7 +46,7 @@ Listed per device as reported by PipeWire:
 
 ## Development
 
-The plugin lives in `~/.config/omarchy/plugins/local.btcodec/` after install. Edit
+The plugin lives in `~/.config/omarchy/plugins/bt.codecs/` after install. Edit
 the QML/JS there; saved changes reload automatically.
 
 - `Panel.qml` — bar widget and panel UI
