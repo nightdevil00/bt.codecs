@@ -275,34 +275,51 @@ Panel {
     currentFill: root.selectedFill
     implicitHeight: rowInner.implicitHeight + Style.spacing.xl
 
-    Row {
+    Item {
       id: rowInner
       anchors.left: parent.left
       anchors.right: parent.right
       anchors.verticalCenter: parent.verticalCenter
       anchors.leftMargin: Style.space(6)
       anchors.rightMargin: Style.space(6)
-      spacing: Style.space(8)
+      implicitHeight: Math.max(iconText.implicitHeight, labelText.implicitHeight, descText.implicitHeight)
 
       Text {
+        id: iconText
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
         text: profileRow.isActive ? "󰄳" : "󰇄"
         color: root.bar.foreground
         font.family: root.bar.fontFamily
         font.pixelSize: Style.font.body
         width: Style.space(20)
         horizontalAlignment: Text.AlignHCenter
-        anchors.verticalCenter: parent.verticalCenter
       }
 
       Text {
+        id: labelText
+        anchors.left: iconText.right
+        anchors.leftMargin: Style.space(8)
+        anchors.right: descText.left
+        anchors.rightMargin: Style.space(8)
+        anchors.verticalCenter: parent.verticalCenter
         text: row.profile ? row.profile.label : ""
         color: root.bar.foreground
         font.family: root.bar.fontFamily
         font.pixelSize: Style.font.body
         font.bold: profileRow.isActive
         elide: Text.ElideRight
-        width: parent.width - Style.space(20) - Style.space(8)
+      }
+
+      Text {
+        id: descText
+        anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
+        text: row.profile ? row.profile.description : ""
+        color: Qt.darker(root.bar.foreground, 1.4)
+        font.family: root.bar.fontFamily
+        font.pixelSize: Style.font.caption
+        elide: Text.ElideRight
       }
     }
 

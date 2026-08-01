@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "bt.codecs",
   "name": "Bluetooth codec",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "mihai",
   "license": "MIT",
   "description": "Shift Bluetooth audio fidelity: pick the A2DP codec or headset profile for each connected Bluetooth audio device.",

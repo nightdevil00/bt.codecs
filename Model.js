@@ -85,8 +85,29 @@ function parseProfile(trimmed) {
     name: name,
     codec: codec,
     available: available,
-    label: profileLabel(name, codec, rest)
+    label: profileLabel(name, codec, rest),
+    description: codecDescription(codec)
   }
+}
+
+var CODEC_DESCRIPTIONS = {
+  "aac": "High quality",
+  "sbc": "Standard",
+  "sbc-xq": "Enhanced",
+  "aptx": "High quality",
+  "aptx-hd": "High-resolution",
+  "aptx-ll": "Low latency",
+  "aptx-adaptive": "Adaptive",
+  "ldac": "High-resolution",
+  "lc3": "Efficient",
+  "msbc": "Wideband voice",
+  "cvsd": "Narrowband voice"
+}
+
+function codecDescription(codec) {
+  if (!codec) return ""
+  var key = String(codec).toLowerCase()
+  return CODEC_DESCRIPTIONS[key] || ""
 }
 
 function profileLabel(name, codec, rest) {
@@ -150,6 +171,7 @@ if (typeof module !== "undefined") {
     parseCards: parseCards,
     parseProfile: parseProfile,
     profileLabel: profileLabel,
+    codecDescription: codecDescription,
     bluetoothCards: bluetoothCards,
     activeCard: activeCard,
     codecShort: codecShort,
