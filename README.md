@@ -17,7 +17,7 @@ connected Bluetooth audio device, straight from the bar.
 Plugins are installed from git with the `omarchy plugin` command:
 
 ```bash
-omarchy plugin add git@github.com:nightdevil00/bt.codecs.git --enable
+omarchy plugin add https://github.com/nightdevil00/bt.codecs.git --enable
 ```
 
 `--enable` places the widget in your bar right away. To pick the bar section
