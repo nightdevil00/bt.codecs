@@ -296,19 +296,45 @@ Panel {
         horizontalAlignment: Text.AlignHCenter
       }
 
-      Text {
-        id: labelText
+      Item {
+        id: labelClip
         anchors.left: iconText.right
         anchors.leftMargin: Style.space(8)
         anchors.right: descText.left
         anchors.rightMargin: Style.space(8)
         anchors.verticalCenter: parent.verticalCenter
-        text: row.profile ? row.profile.label : ""
-        color: root.bar.foreground
-        font.family: root.bar.fontFamily
-        font.pixelSize: Style.font.body
-        font.bold: profileRow.isActive
-        elide: Text.ElideRight
+        height: labelText.implicitHeight
+        clip: true
+
+        Text {
+          id: labelText
+          anchors.verticalCenter: parent.verticalCenter
+          text: row.profile ? row.profile.label : ""
+          color: root.bar.foreground
+          font.family: root.bar.fontFamily
+          font.pixelSize: Style.font.body
+          font.bold: profileRow.isActive
+
+          SequentialAnimation on x {
+            id: marqueeAnim
+            running: root.opened && labelText.text !== ""
+              && labelText.implicitWidth > labelClip.width
+            loops: Animation.Infinite
+
+            PauseAnimation { duration: 600 }
+            PropertyAnimation {
+              to: Math.min(0, labelClip.width - labelText.implicitWidth)
+              duration: Math.max(800, Math.abs(labelText.implicitWidth - labelClip.width) * 2)
+              easing.type: Easing.Linear
+            }
+            PauseAnimation { duration: 600 }
+          }
+
+          Component.onCompleted: {
+            if (root.opened && marqueeAnim.running) marqueeAnim.start()
+            else x = 0
+          }
+        }
       }
 
       Text {
